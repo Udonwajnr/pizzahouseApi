@@ -7,3 +7,5 @@
 *.env.staging
 # vercel
 .vercel
+
+notes
