@@ -3,7 +3,7 @@ const Category = require('../models/categoryModel')
 
 const getCategory = asyncHandler(async(req,res)=>{
     const category = await Category.find()
-    return    res.status(200).json(category)
+    return res.status(200).json(category)
 })
 
 const createCategory=asyncHandler(async(req,res)=>{

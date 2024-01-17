@@ -10,6 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.use("/api/category",require("./routes/categoryRoutes"))
+app.use("/api/menu",require('./routes/menuRoute'))
 
 app.get('/',(req,res)=>{
     res.send('Hello World')
