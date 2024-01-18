@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const categorySchema = require("./categoryModel")
 
 const menuSchema = mongoose.Schema({
     name:{
@@ -17,7 +18,11 @@ const menuSchema = mongoose.Schema({
     image:{
         type:String,
         required:[true,"Please add image"]
-    }    
+    }    ,
+    category:{
+        type:mongoose.Types.ObjectId,ref:"Category",
+        required:[true,"Add a category"]
+    }
 })
 
 
