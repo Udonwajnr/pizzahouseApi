@@ -2,7 +2,13 @@ const asyncHandler = require("express-async-handler")
 const Menu = require("../models/menuModel")
 
 const getMenu =asyncHandler(async(req,res)=>{
+    
     const menu = await Menu.find().populate("category")
+    return res.status(200).json(menu)
+})
+
+const getMenuDetail =asyncHandler(async(req,res)=>{
+    const menu = await Menu.findById(req.params.id).populate("category")
     return res.status(200).json(menu)
 })
 
@@ -37,4 +43,4 @@ const deleteMenu=asyncHandler(async(req,res)=>{
     res.json(req.params.id)
 })
 
-module.exports = {getMenu,createMenu,updateMenu,deleteMenu}
+module.exports = {getMenu,getMenuDetail,createMenu,updateMenu,deleteMenu}
