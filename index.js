@@ -12,12 +12,16 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
+app.use("/api/user",require('./routes/auth'))
 app.use("/api/category",require("./routes/categoryRoutes"))
 app.use("/api/menu",require('./routes/menuRoute'))
+app.use('/api/user', require('./routes/userRoute'));
+
 
 app.get('/',(req,res)=>{
-    res.send('Hello World')
+    res.send('Welcome to my Api')
 })
+
 
 app.listen(port, ()=>{
     console.log(`This Api is about to Rock Hard`)
