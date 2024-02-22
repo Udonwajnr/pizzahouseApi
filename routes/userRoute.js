@@ -7,5 +7,5 @@ router.get('/profile', authenticate, (req, res) => {
     res.json({ message: `Welcome ${req.user.username}` });
   });
 
-
+// testing 
 module.exports = router;
