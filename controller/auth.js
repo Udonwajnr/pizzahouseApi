@@ -34,7 +34,7 @@ const login = asyncHandler(async(req,res,next)=>{
     const token = jwt.sign({userId:user._id},process.env.SECRET_KEY,{
         expiresIn:"1 hour"
     });
-    res.json({token})
+    res.json({token,user})
 })
 
 module.exports = {register,login}
