@@ -2,7 +2,6 @@ const asyncHandler = require("express-async-handler")
 const Menu = require("../models/menuModel")
 
 const getMenu =asyncHandler(async(req,res)=>{
-    
     const menu = await Menu.find().populate("category")
     return res.status(200).json(menu)
 })
@@ -13,7 +12,6 @@ const getMenuDetail =asyncHandler(async(req,res)=>{
 })
 
 const createMenu = asyncHandler(async(req,res)=>{
-    
     const menu = await Menu.create({
         name:req.body.name,
         price:req.body.price,

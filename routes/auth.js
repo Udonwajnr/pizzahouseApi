@@ -1,8 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const {register,login} = require("../controller/auth")
+const {register,login,getAllUsers} = require("../controller/auth")
 const {check } = require('express-validator')
 
+router.route("/").get(getAllUsers)
 router.route("/register").post(
     [
         check("username").notEmpty()

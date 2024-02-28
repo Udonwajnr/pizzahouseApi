@@ -4,7 +4,10 @@ const asyncHandler= require("express-async-handler")
 const bcrypt = require("bcryptjs")
 const {validator,validationResult} = require("express-validator")
 
-
+const getAllUsers =asyncHandler(async(req,res)=>{
+    const user = await User.find()
+    return res.status(200).json(user)
+})
 // register
 const register =asyncHandler(async(req,res)=>{
     const error = validationResult(req)
@@ -16,7 +19,7 @@ const register =asyncHandler(async(req,res)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({username,email,password:hashedPassword});
     await  user.save();
-    res.json({message:"Registration Successful"})
+    res.status(200).json({message:"Registration Successful"})
 })
 
 // Login with existing user
@@ -37,4 +40,4 @@ const login = asyncHandler(async(req,res,next)=>{
     res.json({token,user})
 })
 
-module.exports = {register,login}
+module.exports = {register,login,getAllUsers}

@@ -5,4 +5,5 @@ const {getMenu,getMenuDetail,createMenu,updateMenu,deleteMenu} = require("../con
 router.route('/').get(getMenu).post(createMenu)
 router.route("/:id").get(getMenuDetail).put(updateMenu).delete(deleteMenu)
 
+
 module.exports=router

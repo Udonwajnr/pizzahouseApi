@@ -14,7 +14,6 @@ const createCategory=asyncHandler(async(req,res)=>{
     const category = await Category.create({
         name:req.body.name
     })
-
     return res.status(200).json({category})
 })
 

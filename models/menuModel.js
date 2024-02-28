@@ -20,7 +20,8 @@ const menuSchema = mongoose.Schema({
         required:[true,"Please add image"]
     }    ,
     category:{
-        type:mongoose.Types.ObjectId,ref:"Category",
+        type:mongoose.Types.ObjectId,
+        ref:"Category",
         required:[true,"Add a category"]
     }
 })

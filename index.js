@@ -16,7 +16,8 @@ app.use("/api/user",require('./routes/auth'))
 app.use("/api/category",require("./routes/categoryRoutes"))
 app.use("/api/menu",require('./routes/menuRoute'))
 app.use('/api/user', require('./routes/userRoute'));
-
+app.use('/api/shipping', require('./routes/shippingRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
 
 app.get('/',(req,res)=>{
     res.send('Welcome to my Api')
