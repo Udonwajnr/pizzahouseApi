@@ -9,7 +9,7 @@ const getAllOrders = asyncHandler(async(req,res)=>{
 const createOrders = asyncHandler(async(req,res)=>{
     const {user,menuData,totalPrice} = req.body
 
-    const menu = menu.map(item => ({
+    const menu = menuData.map(item => ({
     productId: item._id,
     quantity: item.quantity || 1, // Assuming a default quantity of 1 if not provided
     }));
