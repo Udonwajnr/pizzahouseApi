@@ -7,17 +7,17 @@ const getAllOrders = asyncHandler(async(req,res)=>{
 })
 
 const createOrders = asyncHandler(async(req,res)=>{
-    const {user,menu,totalPrice} = req.body
+    const {user,menuData,totalPrice} = req.body
 
-    const meal = menu.map(item => ({
+    const menu = menu.map(item => ({
     productId: item._id,
     quantity: item.quantity || 1, // Assuming a default quantity of 1 if not provided
     }));
 
     const order = await Orders.create({
-        user,meal,totalPrice
+        user,menu,totalPrice
     })
-    
+
     return res.status(200).json(order)
 })
 
