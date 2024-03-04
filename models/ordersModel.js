@@ -10,13 +10,49 @@ const ordersSchema = mongoose.Schema({
         productId:{
         type:mongoose.Types.ObjectId,
         ref:"Menu",
-        required:[true,"Add a meal"]},
+        required:[true,"Add a meal"]
+        },
         quantity:{
             type:Number,
             required:true,
         },
     }],
-    totalPrice:Number
+    totalPrice:{
+        type:Number,
+        required:true
+    },
+
+    firstName:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    lastName:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    address:{
+        type:String,
+        required:true,
+    }
+    ,
+    city:{
+        type:String,
+        required:true,
+    },
+    phoneNumber:{
+        type:String,
+        required:true,
+    },
+    paymentId:{
+        type:Number
+    },
+    paymentStatus:{
+        type:Boolean,
+        default:false,
+        required:true
+    }
 })
 
 

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const userSchema =  require('./userModel')
 
 const shippingSchema = mongoose.Schema({
     firstName:{
