@@ -28,6 +28,10 @@ const register =async(req,res)=>{
     duplicateField.push("email")
     console.log("email already exist")
    }
+   if(duplicateField.length >0){
+    return res.status(400).json({duplicateField})
+   }
+
    try{
        const hashedPassword = await bcrypt.hash(password, 10);
    
