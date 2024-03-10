@@ -9,18 +9,37 @@ const getAllUsers =asyncHandler(async(req,res)=>{
     return res.status(200).json(user)
 })
 // register
-const register =asyncHandler(async(req,res)=>{
+const register =async(req,res)=>{
     const error = validationResult(req)
     if(!error.isEmpty()){
       return res.status(400).json({error:error.array()})
     }
-    
     const {username,email,password}= req.body
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({username,email,password:hashedPassword});
-    await  user.save();
-    res.status(200).json({message:"Registration Successful"})
-})
+    const duplicateField =[]
+    const duplicateUserName = await User.findOne({ username: req.body.username })
+    const duplicateEmail = await User.findOne({ email: req.body.email })
+
+   if(duplicateUserName){
+    duplicateField.push("username")
+    console.log("userName already exist")
+   }
+
+   if(duplicateEmail){
+    duplicateField.push("email")
+    console.log("email already exist")
+   }
+   try{
+       const hashedPassword = await bcrypt.hash(password, 10);
+   
+       const user = new User({username,email,password:hashedPassword});
+       await  user.save();
+       res.status(200).json({message:"Registration Successful"})
+       
+    }
+    catch(err){
+        res.json({err:err.message})
+    }
+}
 
 // Login with existing user
 const login = asyncHandler(async(req,res,next)=>{

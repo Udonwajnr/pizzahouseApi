@@ -25,12 +25,10 @@ const ordersSchema = mongoose.Schema({
     firstName:{
         type:String,
         required:true,
-        unique:true
     },
     lastName:{
         type:String,
         required:true,
-        unique:true
     },
     address:{
         type:String,
